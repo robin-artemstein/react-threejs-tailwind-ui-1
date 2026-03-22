@@ -1,4 +1,4 @@
-# React + Three.js testing application 1
+# React + Three.js Tailwind UI testing application 1
 
 A WebGL demo built with:
 
@@ -22,7 +22,7 @@ git add .
 git commit -m "The Nth commit on date."
 git remote rm origin
 git branch -M main
-git remote add origin git@github.com:robin-artemstein/react-threejs-app-1.git
+git remote add origin git@github.com:robin-artemstein/react-threejs-tailwind-ui-1.git
 git push -u -f origin main
 
 # Installation
@@ -39,24 +39,19 @@ bun dev
 ```
 
 # Project Structure
-
-react-babylon-control
-│
+```
+react-threejs-tailwind-ui-1
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Scene.jsx           # R3F Canvas + lighting + sphere
+│   │   ├── WireframeSphere.jsx # The wireframe sphere mesh
+│   │   └── ControlPanel.jsx    # Floating UI panel (right side)
+│   ├── App.jsx                 # Root component, wires everything together
+│   ├── main.jsx                # Entry point
+│   └── index.css               # Tailwind directives + background color
 ├── index.html
-├── package.json
-├── bun.lockb
+├── vite.config.js
 ├── tailwind.config.js
-├── postcss.config.js
-├── tsconfig.json
-├── vite.config.ts
-│
-└── src
-    │
-    ├── main.tsx
-    ├── index.css
-    │
-    ├── App.tsx
-    │
-    └── components
-        │
-        └── BabylonContent.tsx
+└── package.json
+```

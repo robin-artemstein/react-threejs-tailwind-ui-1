@@ -1,34 +1,38 @@
-// components/Scene.jsx
-// The 3D world: lights, the loaded coffee GLB, and every decal-projector box.
-// Reads the box list from shared context.
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
+import WireframeSphere from './WireframeSphere'
 
-import { Suspense, useContext } from "react";
-import { DecalBoxesContext } from "../context/DecalBoxesContext";
-import { CoffeeModel } from "./CoffeeModel";
-import { DecalBox } from "./DecalBox";
-
-export function Scene({ selectedId, onSelect }) {
-  const { decalBoxes } = useContext(DecalBoxesContext);
-
+/**
+ * Scene
+ * Sets up the React Three Fiber Canvas with camera, lighting,
+ * orbit controls, and the wireframe sphere.
+ *
+ * @param {number} sphereSize - Passed down to WireframeSphere
+ */
+export default function Scene({ sphereSize }) {
   return (
-    <>
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[5, 8, 5]} intensity={1.2} castShadow />
+    /*
+      Canvas fills its parent container.
+      camera.position: pull back on Z so sphere is fully visible.
+      gl.alpha: true keeps canvas background transparent so our
+      CSS gradient shows through.
+    */
+    <Canvas
+      style={{ width: '100%', height: '100%' }}
+      camera={{ position: [0, 0, 5], fov: 50 }}
+      gl={{ alpha: true }}        // transparent WebGL background
+    >
+      {/* Subtle ambient light so wireframe isn't pitch black on dark bg */}
+      <ambientLight intensity={0.5} />
 
-      <Suspense fallback={null}>
-        {/* Coffee mug – decals are projected onto its mesh surfaces */}
-        <CoffeeModel />
+      {/* The wireframe sphere — size driven by UI panel state */}
+      <WireframeSphere size={sphereSize} />
 
-        {/* One wireframe DecalBox per entry in the shared list */}
-        {decalBoxes.map((box) => (
-          <DecalBox
-            key={box.id}
-            id={box.id}
-            isSelected={box.id === selectedId}
-            onSelect={onSelect}
-          />
-        ))}
-      </Suspense>
-    </>
-  );
+      {/*
+        OrbitControls lets the user rotate/zoom with mouse.
+        enablePan: false keeps the sphere centred.
+      */}
+      <OrbitControls enablePan={false} />
+    </Canvas>
+  )
 }
