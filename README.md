@@ -16,7 +16,7 @@ The application loads a GLB model and a draggable decal projector with gizmo.
 ---
 
 ## Push to GitHub repository
-
+```
 git init
 git add .
 git commit -m "The Nth commit on date."
@@ -24,7 +24,7 @@ git remote rm origin
 git branch -M main
 git remote add origin git@github.com:robin-artemstein/react-threejs-tailwind-ui-1.git
 git push -u -f origin main
-
+```
 ## Installation
 
 Install Bun first
