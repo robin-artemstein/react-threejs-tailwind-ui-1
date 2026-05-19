@@ -1,15 +1,15 @@
 # React + Three.js Tailwind UI testing application 1
 
-A WebGL demo built with:
+A WebGL demo built with the following tech stack combination.
 
-- React
-- Vite
-- Three.js
-- React Three Fiber
-- React Three Drei
-- Leva UI panel
-- TailwindCSS
-- Bun
+- React for UI and interaction design
+- Vite for web building
+- Three.js for 3D content rendering in WebGL
+- React Three Fiber for the syntax sugar bridge between React and Three.js
+- React Three Drei for utility of React Three Fiber
+- Leva UI panel for Three.js UI
+- TailwindCSS for styling
+- Bun for dependencies installation and running
 
 The application loads a GLB model and a draggable decal projector with gizmo.
 
